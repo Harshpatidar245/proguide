@@ -2,6 +2,10 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
+
+
+const BASE_URL = import.meta.env.VITE_BASE_API_URL || 'http://localhost:5000';
+
 const Navbar = () => {
   const { user, logout } = useAuth();
   const location = useLocation();
@@ -82,7 +86,7 @@ const Navbar = () => {
                 <div className="nav-profile d-flex align-items-center gap-2">
                   {user.profilePhoto ? (
                     <img
-                      src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `http://localhost:5000${user.profilePhoto}`}
+                      src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `${BASE_URL}${user.profilePhoto}`}
                       alt="Profile"
                       className="nav-avatar"
                     />

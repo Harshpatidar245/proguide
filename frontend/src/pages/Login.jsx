@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_BASE_API_URL || 'http://localhost:5000';
+
 // Google Login Button
 const GoogleLoginButton = () => {
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = `${BASE_URL}/api/auth/google`;
   };
 
   return (

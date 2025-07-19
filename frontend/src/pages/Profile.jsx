@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_BASE_API_URL || 'http://localhost:5000';
+
 const Profile = () => {
   const { user } = useAuth();
   const [profileData, setProfileData] = useState(null);
@@ -68,7 +70,7 @@ const Profile = () => {
           <div className="profile-avatar">
             {profileData.profilePhoto ? (
               <img 
-                src={profileData.profilePhoto.startsWith('http') ? profileData.profilePhoto : `http://localhost:5000${profileData.profilePhoto}`}
+                src={profileData.profilePhoto.startsWith('http') ? profileData.profilePhoto : `${BASE_URL}${profileData.profilePhoto}`}
                 alt="Profile" 
                 className="profile-avatar-img"
               />
@@ -208,7 +210,7 @@ const Profile = () => {
                 </div>
                 <div className="mt-3">
                   <a 
-                    href={`http://localhost:5000${profileData.resume.path}`} 
+                    href={`${BASE_URL}${profileData.resume.path}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn btn-secondary"

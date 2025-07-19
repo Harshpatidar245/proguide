@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
+const BASE_URL = import.meta.env.VITE_BASE_API_URL || 'http://localhost:5000';
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -16,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Configure axios defaults
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = `${BASE_URL}/api`;
   axios.defaults.baseURL = API_URL;
 
   // Set auth token in axios headers
