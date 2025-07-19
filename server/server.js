@@ -17,9 +17,21 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "https://proguide-xfbv.vercel.app" , // your Vite frontend URL
-  credentials: true
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'https://proguide-xfbv.vercel.app',
+      'https://proguide-opal.vercel.app',
+    ];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
