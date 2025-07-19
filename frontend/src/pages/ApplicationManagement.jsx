@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './ApplicationManagement.css'; // Assuming you have a CSS file for styles
 
 
 const BASE_URL = import.meta.env.VITE_BASE_API_URL || 'http://localhost:5000';
